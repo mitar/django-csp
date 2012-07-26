@@ -22,6 +22,7 @@ class CSPMiddleware(object):
             if request.path_info.startswith(prefix):
                 return response
 
+        ua = request.META['HTTP_USER_AGENT']
         header = 'X-Content-Security-Policy'
         if getattr(settings, 'CSP_REPORT_ONLY', False):
             header = 'X-Content-Security-Policy-Report-Only'
